@@ -1,0 +1,36 @@
+Going to create DB mydb
+DB mydb has been created. Going to create security Context
+Going to create MemoryFacet instance
+Going to update MemoryFacet instance.
+Exception in thread "main" com.orientechnologies.orient.server.distributed.task.ODistributedOperationException: Quorum 3 not reached for request (id=0.29 task=tx[1]{record_update(#25:0 v.1)} user=#5:4). Elapsed=20ms. Servers in timeout/conflict are:
+ - node03: TX[1]{1}
+Received: 
+ - node01: TX[1]{2}
+ - node02: TX[1]{2}
+ - node03: TX[1]{1}
+	DB name="mydb"
+	DB name="mydb"
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.orientechnologies.orient.client.binary.OChannelBinaryAsynchClient.throwSerializedException(OChannelBinaryAsynchClient.java:442)
+	at com.orientechnologies.orient.client.binary.OChannelBinaryAsynchClient.handleStatus(OChannelBinaryAsynchClient.java:393)
+	at com.orientechnologies.orient.client.binary.OChannelBinaryAsynchClient.beginResponse(OChannelBinaryAsynchClient.java:275)
+	at com.orientechnologies.orient.client.binary.OChannelBinaryAsynchClient.beginResponse(OChannelBinaryAsynchClient.java:167)
+	at com.orientechnologies.orient.client.remote.OStorageRemote.beginResponse(OStorageRemote.java:2225)
+	at com.orientechnologies.orient.client.remote.OStorageRemote$28.execute(OStorageRemote.java:1396)
+	at com.orientechnologies.orient.client.remote.OStorageRemote$28.execute(OStorageRemote.java:1368)
+	at com.orientechnologies.orient.client.remote.OStorageRemote$2.execute(OStorageRemote.java:198)
+	at com.orientechnologies.orient.client.remote.OStorageRemote.baseNetworkOperation(OStorageRemote.java:243)
+	at com.orientechnologies.orient.client.remote.OStorageRemote.networkOperationRetry(OStorageRemote.java:195)
+	at com.orientechnologies.orient.client.remote.OStorageRemote.networkOperation(OStorageRemote.java:206)
+	at com.orientechnologies.orient.client.remote.OStorageRemote.commit(OStorageRemote.java:1368)
+	at com.orientechnologies.orient.core.tx.OTransactionOptimistic.doCommit(OTransactionOptimistic.java:533)
+	at com.orientechnologies.orient.core.tx.OTransactionOptimistic.commit(OTransactionOptimistic.java:104)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.commit(ODatabaseDocumentTx.java:2840)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.commit(ODatabaseDocumentTx.java:2809)
+	at com.tinkerpop.blueprints.impls.orient.OrientTransactionalGraph.commit(OrientTransactionalGraph.java:182)
+	at org.acme.ReproduceBug7354.updateVertex(ReproduceBug7354.java:148)
+	at org.acme.ReproduceBug7354.execute(ReproduceBug7354.java:160)
+	at org.acme.ReproduceBug7354.main(ReproduceBug7354.java:166)
